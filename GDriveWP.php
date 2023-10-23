@@ -28,12 +28,13 @@ class GDriveWP
 
     function shortcode($attrs, $content, $tag){
         $file_id = explode('/view', explode('/file/d/', $content)[1])[0]; // GET File ID
-        $download_link =  get_site_url()."/wp-json/gdrive/v1/image?file=$file_id"; // Craft download link
+        $download_link = get_site_url()."/wp-json/gdrive/v1/image?file=$file_id"; // Craft download link
         // Display the final image
-        if(!is_array($attrs)) return "Something went wrong in params!";
         $img_attrs = "";
-        if(isset($attrs["width"])) $img_attrs .= 'width="'.$attrs["width"].'" ';
-        if(isset($attrs["height"])) $img_attrs .= 'height="'.$attrs["height"].'"';
+        if(is_array($attrs)) {
+            if (isset($attrs["width"])) $img_attrs .= 'width="' . $attrs["width"] . '" ';
+            if (isset($attrs["height"])) $img_attrs .= 'height="' . $attrs["height"] . '"';
+        }
         return '<img '.$img_attrs.' src="'.$download_link.'"></img>';
     }
 }
