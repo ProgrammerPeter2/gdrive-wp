@@ -18,6 +18,10 @@ class GDriveWP
         $this->imageRestService = new ImageRestService($this->driveClient);
         add_action('init', array($this, 'register_shortcode'));
         add_action('rest_api_init', array($this->imageRestService, 'register'));
+        add_action('wp_enqueue_scripts', function (){
+            wp_enqueue_style('img-load-anim', plugin_dir_url(__FILE__).'img-loading.css');
+            wp_enqueue_script('drive-images', plugin_dir_url(__FILE__).'drive-image-loader.js', array('jquery'));
+        });
     }
 
     function register_shortcode(): void
@@ -35,7 +39,7 @@ class GDriveWP
             if (isset($attrs["width"])) $img_attrs .= 'width="' . $attrs["width"] . '" ';
             if (isset($attrs["height"])) $img_attrs .= 'height="' . $attrs["height"] . '"';
         }
-        return '<img '.$img_attrs.' src="'.$download_link.'"></img>';
+        return '<figure class="drive-img" data-src="'.$download_link.'" '.$img_attrs.'></figure>';
     }
 }
 
