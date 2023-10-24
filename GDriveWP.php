@@ -36,8 +36,8 @@ class GDriveWP
         // Display the final image
         $img_attrs = "";
         if(is_array($attrs)) {
-            if (isset($attrs["width"])) $img_attrs .= 'width="' . $attrs["width"] . '" ';
-            if (isset($attrs["height"])) $img_attrs .= 'height="' . $attrs["height"] . '"';
+            if (isset($attrs["width"])) $img_attrs .= 'data-width="' . $attrs["width"] . '" ';
+            if (isset($attrs["height"])) $img_attrs .= 'data-height="' . $attrs["height"] . '"';
         }
         return '<figure class="drive-img" data-src="'.$download_link.'" '.$img_attrs.'></figure>';
     }
