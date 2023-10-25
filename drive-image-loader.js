@@ -17,10 +17,10 @@ $(document).ready(() => {
     $(".drive-img").each((_, item) => {
         let url = $(item).data('src')
         resize_item(item, get_data_safe(item, "width", "444px"), get_data_safe(item, "height", "250px"))
-        $(item).append('<img class="act-img"/><div class="loader-holder"><div class="loader"></div></div>')
+        $(item).append('<img class="act-img"/><div class="loader-holder"><div class="drive-loader"></div></div>')
         let loader_size = Math.min(get_size_data(item, "width", "200")*0.64, get_size_data(item, "height", "200")*0.64,200)
             + "px !important"
-        resize_item($(item).children(".loader-holder").eq(0).children(".loader") , loader_size, loader_size)
+        resize_item($(item).children(".loader-holder").eq(0).children(".drive-loader") , loader_size, loader_size)
         let img = $(item).children(".act-img")
         $.ajax({
             url : url,
