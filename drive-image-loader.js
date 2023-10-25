@@ -14,7 +14,7 @@ $(document).ready(() => {
     $(".drive-img").each((_, item) => {
         let url = $(item).data('src')
         resize_item(item, get_data_safe(item, "width", "444px"), get_data_safe(item, "height", "250px"))
-        $(item).append('<img class="act-img"/><div class="loader"></div>')
+        $(item).append('<img class="act-img"/><div class="loader-holder"><div class="loader"></div></div>')
         let img = $(item).children(".act-img")
         $.ajax({
             url : url,
@@ -24,7 +24,7 @@ $(document).ready(() => {
             $(img).attr("src", url)
             $(img).hide()
         }).success(() => {
-            $(item).children(".loader").hide()
+            $(item).children(".loader-holder").hide()
             $(img).show()
         });
     })
