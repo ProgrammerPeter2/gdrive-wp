@@ -1,11 +1,9 @@
 /*Loader Animation*/
 .loader {
     margin: auto;
-    border: 20px solid #8a99af !important;
+    border: 15px solid #8a99af !important;
     border-radius: 50% !important;
-    border-top: 20px solid #FF7A59 !important;
-    width: 200px !important;
-    height: 200px !important;
+    border-top: 15px solid #FF7A59 !important;
     animation: spinner 4s linear infinite;
 }
 

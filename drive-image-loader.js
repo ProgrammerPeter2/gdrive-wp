@@ -6,8 +6,11 @@ const get_data_safe = (element, key, default_data) => {
 }
 
 const resize_item = (element, width, height) => {
-    $(element).css("width", width)
-    $(element).css("height", height)
+    $(element).attr("style", "width: "+width+"; height: "+height+";")
+}
+
+const get_size_data = (element, key, default_size) => {
+    return Number.parseInt(get_data_safe(element, key, default_size).split('px')[0])
 }
 
 $(document).ready(() => {
@@ -15,6 +18,9 @@ $(document).ready(() => {
         let url = $(item).data('src')
         resize_item(item, get_data_safe(item, "width", "444px"), get_data_safe(item, "height", "250px"))
         $(item).append('<img class="act-img"/><div class="loader-holder"><div class="loader"></div></div>')
+        let loader_size = Math.min(get_size_data(item, "width", "200")*0.64, get_size_data(item, "height", "200")*0.64,200)
+            + "px !important"
+        resize_item($(item).children(".loader-holder").eq(0).children(".loader") , loader_size, loader_size)
         let img = $(item).children(".act-img")
         $.ajax({
             url : url,
