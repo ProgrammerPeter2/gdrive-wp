@@ -19,7 +19,7 @@ class GDriveWP
         add_action('init', array($this, 'register_shortcode'));
         add_action('rest_api_init', array($this->imageRestService, 'register'));
         add_action('wp_enqueue_scripts', function (){
-            wp_enqueue_style('img-load-anim', plugin_dir_url(__FILE__).'img-loading.css');
+            wp_enqueue_style('img-load-anim', plugin_dir_url(__FILE__) . 'gdrive-imgs.css');
             wp_enqueue_script('drive-images', plugin_dir_url(__FILE__).'drive-image-loader.js', array('jquery'));
         });
     }

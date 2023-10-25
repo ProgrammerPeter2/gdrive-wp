@@ -1,3 +1,4 @@
+/*Loader Animation*/
 .loader {
     margin: auto;
     border: 20px solid #8a99af;
@@ -11,4 +12,9 @@
 @keyframes spinner {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Other styles */
+.act-img {
+    width: 100%;
 }
